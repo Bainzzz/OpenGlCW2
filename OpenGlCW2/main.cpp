@@ -189,7 +189,7 @@ int main()
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
         processInput(window);
-        glClearColor(0.2f, 0.3f, 0.6f, 1.0f); //sky blue background
+        glClearColor(0.53f, 0.81f, 0.92f, 1.0f); //sky blue background
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         // Activate shader
         ourShader.use();
@@ -205,11 +205,11 @@ int main()
         ourShader.setVec3("lightPos", glm::vec3(0.0f, 10.0f, 10.0f));
         ourShader.setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
         //draw floor 
-        ourShader.setVec3("objectColor", glm::vec3(0.6f, 0.4f, 0.2f)); // brown floor
+        ourShader.setVec3("objectColor", glm::vec3(0.5f, 0.5f, 0.5f)); // grey floor
         glBindVertexArray(floorVAO);
         glDrawArrays(GL_TRIANGLES, 0, 6);
         //draw targets 
-        ourShader.setVec3("objectColor", glm::vec3(7.0f, 8.0f, 0.0f)); //yellow target 
+        ourShader.setVec3("objectColor", glm::vec3(1.0f, 0.9f, 0.0f)); //yellow target 
         for (int i = 0; i < 5; i++) {
             if (targetHit[i]) continue;
             model = glm::mat4(1.0f);
