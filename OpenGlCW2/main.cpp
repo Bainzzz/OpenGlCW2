@@ -209,7 +209,7 @@ int main()
         glBindVertexArray(floorVAO);
         glDrawArrays(GL_TRIANGLES, 0, 6);
         //draw targets 
-        ourShader.setVec3("objectColor", glm::vec3(1.0f, 0.0f, 0.0f)); //red target 
+        ourShader.setVec3("objectColor", glm::vec3(7.0f, 8.0f, 0.0f)); //yellow target 
         for (int i = 0; i < 5; i++) {
             if (targetHit[i]) continue;
             model = glm::mat4(1.0f);
