@@ -5,7 +5,6 @@
 
 #include <vector>
 
-// Defines several possible options for camera movement
 enum Camera_Movement {
     FORWARD,
     BACKWARD,
@@ -13,14 +12,12 @@ enum Camera_Movement {
     RIGHT
 };
 
-// Default camera values
 const float YAW = -90.0f;
 const float PITCH = 0.0f;
 const float SPEED = 2.5f;
 const float SENSITIVITY = 0.1f;
 const float ZOOM = 45.0f;
 
-// An abstract camera class that processes input and calculates the corresponding Euler Angles, Vectors and Matrices for use in OpenGL
 class Camera
 {
 public:
@@ -38,7 +35,6 @@ public:
     float MouseSensitivity;
     float Zoom;
 
-    // constructor with vectors
     Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
     {
         Position = position;
@@ -48,13 +44,11 @@ public:
         updateCameraVectors();
     }
 
-    // returns the view matrix calculated using Euler Angles and the LookAt Matrix
     glm::mat4 GetViewMatrix()
     {
         return glm::lookAt(Position, Position + Front, Up);
     }
 
-    // processes input received from any keyboard-like input system
     void ProcessKeyboard(Camera_Movement direction, float deltaTime)
     {
         float velocity = MovementSpeed * deltaTime;
@@ -68,7 +62,6 @@ public:
             Position += Right * velocity;
     }
 
-    // processes input received from a mouse input system
     void ProcessMouseMovement(float xoffset, float yoffset, bool constrainPitch = true)
     {
         xoffset *= MouseSensitivity;
@@ -77,7 +70,6 @@ public:
         Yaw += xoffset;
         Pitch += yoffset;
 
-        // make sure that when pitch is out of bounds, screen doesn't get flipped
         if (constrainPitch)
         {
             if (Pitch > 89.0f)
@@ -86,21 +78,17 @@ public:
                 Pitch = -89.0f;
         }
 
-        // update Front, Right and Up Vectors using the updated Euler angles
         updateCameraVectors();
     }
 
 private:
-    // calculates the front vector from the Camera's (updated) Euler Angles
     void updateCameraVectors()
     {
-        // calculate the new Front vector
         glm::vec3 front;
         front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
         front.y = sin(glm::radians(Pitch));
         front.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
         Front = glm::normalize(front);
-        // also re-calculate the Right and Up vector
         Right = glm::normalize(glm::cross(Front, WorldUp));  // normalize
         Up = glm::normalize(glm::cross(Right, Front));
     }
