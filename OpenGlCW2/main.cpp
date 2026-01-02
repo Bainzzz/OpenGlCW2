@@ -28,45 +28,38 @@ float floorVertices[] = {
     -50.0f, 0.0f, 50.0f, 0.0f, 1.0f, 0.0f
 };
 unsigned int floorVAO, floorVBO;
-
-// NEW: CUBE TARGET VERTICES (FULL CUBE WITH NORMALS)
 float cubeVertices[] = {
-    // positions          // normals
-    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-     0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-     0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-     0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-
-    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-     0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-     0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-     0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-
-    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-    -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-    -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-
-     0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-     0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-     0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-     0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-     0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-
+    // positions // normals
+    -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
+     0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
+     0.5f,  0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
+     0.5f,  0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
+    -0.5f,  0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
+    -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
+    -0.5f, -0.5f,  0.5f, 0.0f, 0.0f,  1.0f,
+     0.5f, -0.5f,  0.5f, 0.0f, 0.0f,  1.0f,
+     0.5f,  0.5f,  0.5f, 0.0f, 0.0f,  1.0f,
+     0.5f,  0.5f,  0.5f, 0.0f, 0.0f,  1.0f,
+    -0.5f,  0.5f,  0.5f, 0.0f, 0.0f,  1.0f,
+    -0.5f, -0.5f,  0.5f, 0.0f, 0.0f,  1.0f,
+    -0.5f,  0.5f,  0.5f, -1.0f, 0.0f,  0.0f,
+    -0.5f,  0.5f, -0.5f, -1.0f, 0.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f, -1.0f, 0.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f, -1.0f, 0.0f,  0.0f,
+    -0.5f, -0.5f,  0.5f, -1.0f, 0.0f,  0.0f,
+    -0.5f,  0.5f,  0.5f, -1.0f, 0.0f,  0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,  0.0f,
+     0.5f,  0.5f, -0.5f,  1.0f, 0.0f,  0.0f,
+     0.5f, -0.5f, -0.5f,  1.0f, 0.0f,  0.0f,
+     0.5f, -0.5f, -0.5f,  1.0f, 0.0f,  0.0f,
+     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,  0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,  0.0f,
     -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
      0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
      0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
      0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
     -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
     -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
-
     -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
      0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
      0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
@@ -75,8 +68,6 @@ float cubeVertices[] = {
     -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
 };
 unsigned int cubeVAO, cubeVBO;
-
-// NEW: TARGET POSITIONS (5 CUBES AT DIFFERENT LOCATIONS)
 glm::vec3 targetPositions[] = {
     glm::vec3(0.0f, 1.0f, -10.0f),
     glm::vec3(5.0f, 1.5f, -15.0f),
@@ -84,55 +75,42 @@ glm::vec3 targetPositions[] = {
     glm::vec3(3.0f, 2.0f, -20.0f),
     glm::vec3(-3.0f, 1.0f, -18.0f)
 };
-bool targetHit[5] = {false, false, false, false, false};
+bool targetHit[5] = { false, false, false, false, false };
 int score = 0;
-
-// NEW: CROSSHAIR VERTICES (SIMPLE LINES IN 2D NDC SPACE)
 unsigned int crosshairVAO, crosshairVBO;
 float crosshairVertices[] = {
-    -0.02f,  0.0f,
-     0.02f,  0.0f,
-    0.0f,  -0.02f,
-    0.0f,   0.02f
+    -0.02f, 0.0f,
+     0.02f, 0.0f,
+    0.0f, -0.02f,
+    0.0f, 0.02f
 };
 
 void processInput(GLFWwindow* window);
 void mouse_callback(GLFWwindow* window, double xposIn, double yposIn);
-
-// NEW: IMPROVED SHOOT FUNCTION (ACCURATE RAY-SPHERE HIT DETECTION)
 void shoot() {
     glm::vec3 rayDir = camera.Front;
     glm::vec3 rayOrigin = camera.Position;
-
     float closestDist = 1000.0f; // large initial value
     int hitIndex = -1;
-
     for (int i = 0; i < 5; i++) {
         if (targetHit[i]) continue;
-
         glm::vec3 targetCenter = targetPositions[i];
         float radius = 0.75f; // half cube size after scale(1.5) -> 1.5/2 = 0.75
-
         // Vector from ray origin to sphere center
         glm::vec3 toCenter = targetCenter - rayOrigin;
-
         float distToCenter = glm::length(toCenter);
         glm::vec3 normalizedToCenter = toCenter / distToCenter;
-
         // Angle check (must be aiming fairly directly)
         float dotAngle = glm::dot(normalizedToCenter, rayDir);
         if (dotAngle < 0.95f) continue; // tighter aim required
-
         // Distance from ray line to sphere center (perpendicular)
         float perpDist = glm::length(glm::cross(toCenter, rayDir));
-
         // If perpendicular distance <= radius, it's a potential hit
         if (perpDist <= radius && distToCenter < closestDist) {
             closestDist = distToCenter;
             hitIndex = i;
         }
     }
-
     if (hitIndex != -1) {
         targetHit[hitIndex] = true;
         score++;
@@ -142,6 +120,7 @@ void shoot() {
         std::cout << "MISS!" << std::endl;
     }
 }
+
 int main()
 {
     //GLFW initialization
@@ -180,8 +159,6 @@ int main()
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
     glBindVertexArray(0);
-
-    // NEW: CUBE TARGET VAO/VBO SETUP
     glGenVertexArrays(1, &cubeVAO);
     glGenBuffers(1, &cubeVBO);
     glBindVertexArray(cubeVAO);
@@ -192,8 +169,6 @@ int main()
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
     glBindVertexArray(0);
-
-    // NEW: CROSSHAIR VAO/VBO SETUP
     glGenVertexArrays(1, &crosshairVAO);
     glGenBuffers(1, &crosshairVBO);
     glBindVertexArray(crosshairVAO);
@@ -202,9 +177,11 @@ int main()
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
     glBindVertexArray(0);
-
     //load shader
     Shader ourShader("shaders/vertex.shader", "shaders/fragment.shader");
+
+    Shader crosshairShader("shaders/crosshair.vert", "shaders/crosshair.frag");
+
     //render loop
     while (!glfwWindowShouldClose(window))
     {
@@ -227,26 +204,27 @@ int main()
         //simple light
         ourShader.setVec3("lightPos", glm::vec3(0.0f, 10.0f, 10.0f));
         ourShader.setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
-
-        // DRAW FLOOR
+        //draw floor 
         ourShader.setVec3("objectColor", glm::vec3(0.6f, 0.4f, 0.2f)); // brown floor
         glBindVertexArray(floorVAO);
         glDrawArrays(GL_TRIANGLES, 0, 6);
-
-        // DRAW TARGETS (ONLY IF NOT HIT)
-        ourShader.setVec3("objectColor", glm::vec3(1.0f, 0.0f, 0.0f)); // RED TARGETS
+        //draw targets 
+        ourShader.setVec3("objectColor", glm::vec3(1.0f, 0.0f, 0.0f)); //red target 
         for (int i = 0; i < 5; i++) {
             if (targetHit[i]) continue;
             model = glm::mat4(1.0f);
             model = glm::translate(model, targetPositions[i]);
-            model = glm::scale(model, glm::vec3(1.5f)); // BIGGER CUBES
+            model = glm::scale(model, glm::vec3(1.5f)); 
             ourShader.setMat4("model", model);
             glBindVertexArray(cubeVAO);
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
 
-        // NEW: DRAW CROSSHAIR (2D OVERLAY - NO DEPTH TEST)
+     
         glDisable(GL_DEPTH_TEST);
+        crosshairShader.use();
+        glm::mat4 orthoProj = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f);
+        crosshairShader.setMat4("projection", orthoProj);
         glBindVertexArray(crosshairVAO);
         glDrawArrays(GL_LINES, 0, 4);
         glEnable(GL_DEPTH_TEST);
@@ -277,8 +255,6 @@ void processInput(GLFWwindow* window)
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         camera.ProcessKeyboard(RIGHT, deltaTime);
     camera.Position.y = 1.5f;
-
-    // NEW: LEFT MOUSE CLICK TO SHOOT
     static bool lastLeft = false;
     bool currentLeft = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
     if (currentLeft && !lastLeft) {

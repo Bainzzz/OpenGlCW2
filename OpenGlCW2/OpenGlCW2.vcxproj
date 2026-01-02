@@ -146,6 +146,10 @@
     <Text Include="shaders\fragment.shader" />
     <Text Include="shaders\vertex.shader" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\crosshair.frag" />
+    <None Include="shaders\crosshair.vert" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

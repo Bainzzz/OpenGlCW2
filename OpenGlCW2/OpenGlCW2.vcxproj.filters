@@ -47,4 +47,12 @@
       <Filter>shaders</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\crosshair.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\crosshair.vert">
+      <Filter>shaders</Filter>
+    </None>
+  </ItemGroup>
 </Project>
