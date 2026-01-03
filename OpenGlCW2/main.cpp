@@ -6,17 +6,22 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "Camera.h"
 #include "Shader.h"
+
+
 //window dimensions
 const unsigned int SCR_WIDTH = 1280;
 const unsigned int SCR_HEIGHT = 720;
+
 //camera
 Camera camera(glm::vec3(0.0f, 1.5f, 5.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
+
 //timing
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
+
 //floor vertices
 float floorVertices[] = {
     //positions //normals
@@ -27,7 +32,9 @@ float floorVertices[] = {
      50.0f, 0.0f, 50.0f, 0.0f, 1.0f, 0.0f,
     -50.0f, 0.0f, 50.0f, 0.0f, 1.0f, 0.0f
 };
+
 unsigned int floorVAO, floorVBO;
+
 float cubeVertices[] = {
     // positions // normals
     -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
@@ -67,6 +74,7 @@ float cubeVertices[] = {
     -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
     -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
 };
+
 unsigned int cubeVAO, cubeVBO;
 glm::vec3 targetPositions[] = {
     glm::vec3(0.0f, 1.0f, -10.0f),
@@ -75,9 +83,11 @@ glm::vec3 targetPositions[] = {
     glm::vec3(3.0f, 2.0f, -20.0f),
     glm::vec3(-3.0f, 1.0f, -18.0f)
 };
+
 bool targetHit[5] = { false, false, false, false, false };
 int score = 0;
 unsigned int crosshairVAO, crosshairVBO;
+
 float crosshairVertices[] = {
     -0.02f, 0.0f,
      0.02f, 0.0f,
@@ -87,6 +97,7 @@ float crosshairVertices[] = {
 
 void processInput(GLFWwindow* window);
 void mouse_callback(GLFWwindow* window, double xposIn, double yposIn);
+
 void shoot() {
     glm::vec3 rayDir = camera.Front;
     glm::vec3 rayOrigin = camera.Position;
@@ -111,8 +122,12 @@ void shoot() {
             hitIndex = i;
         }
     }
+
     if (hitIndex != -1) {
-        targetHit[hitIndex] = true;
+        float newX = (rand() % 11) - 5.0f; // -5 to 5
+        float newY = 1.0f; // fixed height
+        float newZ = -(rand() % 11 + 10.0f); // -10 to -20
+        targetPositions[hitIndex] = glm::vec3(newX, newY, newZ);
         score++;
         std::cout << "HIT TARGET " << hitIndex << "! SCORE: " << score << std::endl;
     }
@@ -136,14 +151,17 @@ int main()
         return -1;
     }
     glfwMakeContextCurrent(window);
+
     //GLAD
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
+
     glfwSetCursorPosCallback(window, mouse_callback);
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
     glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT);
     glEnable(GL_DEPTH_TEST);
     //floor VAO/VBO setup
@@ -177,10 +195,12 @@ int main()
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
     glBindVertexArray(0);
+   
     //load shader
     Shader ourShader("shaders/vertex.shader", "shaders/fragment.shader");
-
     Shader crosshairShader("shaders/crosshair.vert", "shaders/crosshair.frag");
+
+    srand(static_cast<unsigned>(time(0)));
 
     //render loop
     while (!glfwWindowShouldClose(window))
@@ -189,27 +209,34 @@ int main()
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
         processInput(window);
-        glClearColor(0.53f, 0.81f, 0.92f, 1.0f); //sky blue background
+
+        glClearColor(0.15f, 0.18f, 0.22f, 1.0f); //sky blue background
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
         // Activate shader
         ourShader.use();
+
         // Create matrices
         glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / SCR_HEIGHT, 0.1f, 100.0f);
         glm::mat4 view = camera.GetViewMatrix();
         glm::mat4 model = glm::mat4(1.0f); //identity for floor
+
         //pass matrices to shader
         ourShader.setMat4("projection", projection);
         ourShader.setMat4("view", view);
         ourShader.setMat4("model", model);
+
         //simple light
         ourShader.setVec3("lightPos", glm::vec3(0.0f, 10.0f, 10.0f));
-        ourShader.setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
+        ourShader.setVec3("lightColor", glm::vec3(0.9f, 0.8f, 0.6f));
+
         //draw floor 
-        ourShader.setVec3("objectColor", glm::vec3(0.5f, 0.5f, 0.5f)); // grey floor
+        ourShader.setVec3("objectColor", glm::vec3(0.25f, 0.25f, 0.28f)); // grey floor
         glBindVertexArray(floorVAO);
         glDrawArrays(GL_TRIANGLES, 0, 6);
+
         //draw targets 
-        ourShader.setVec3("objectColor", glm::vec3(1.0f, 0.9f, 0.0f)); //yellow target 
+        ourShader.setVec3("objectColor", glm::vec3(0.7f, 0.55f, 0.1f)); //yellow target 
         for (int i = 0; i < 5; i++) {
             if (targetHit[i]) continue;
             model = glm::mat4(1.0f);
@@ -232,6 +259,7 @@ int main()
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+
     glDeleteVertexArrays(1, &floorVAO);
     glDeleteBuffers(1, &floorVBO);
     glDeleteVertexArrays(1, &cubeVAO);
@@ -241,6 +269,7 @@ int main()
     glfwTerminate();
     return 0;
 }
+
 //controls
 void processInput(GLFWwindow* window)
 {
@@ -262,6 +291,7 @@ void processInput(GLFWwindow* window)
     }
     lastLeft = currentLeft;
 }
+
 void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
 {
     float xpos = static_cast<float>(xposIn);
