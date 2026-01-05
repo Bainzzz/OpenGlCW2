@@ -22,6 +22,10 @@ bool firstMouse = true;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
+//timer
+float gameTime = 60.0f; // 60 seconds
+bool gameOver = false;
+
 //floor vertices
 float floorVertices[] = {
     //positions //normals
@@ -111,11 +115,14 @@ void shoot() {
         glm::vec3 toCenter = targetCenter - rayOrigin;
         float distToCenter = glm::length(toCenter);
         glm::vec3 normalizedToCenter = toCenter / distToCenter;
+
         // Angle check (must be aiming fairly directly)
         float dotAngle = glm::dot(normalizedToCenter, rayDir);
         if (dotAngle < 0.95f) continue; // tighter aim required
+
         // Distance from ray line to sphere center (perpendicular)
         float perpDist = glm::length(glm::cross(toCenter, rayDir));
+
         // If perpendicular distance <= radius, it's a potential hit
         if (perpDist <= radius && distToCenter < closestDist) {
             closestDist = distToCenter;
@@ -123,10 +130,11 @@ void shoot() {
         }
     }
 
-    if (hitIndex != -1) {
-        float newX = (rand() % 11) - 5.0f; // -5 to 5
-        float newY = 1.0f; // fixed height
-        float newZ = -(rand() % 11 + 10.0f); // -10 to -20
+    if (hitIndex != -1) {  
+        //target respawn thresholds
+        float newX = static_cast<float>((rand() % 20 - 10)); // -10 to +10
+        float newY = 0.5f + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / 2.5f)); // 0.5 to 3.0
+        float newZ = -static_cast<float>((rand() % 20 + 10)); // -10 to -30
         targetPositions[hitIndex] = glm::vec3(newX, newY, newZ);
         score++;
         std::cout << "HIT TARGET " << hitIndex << "! SCORE: " << score << std::endl;
@@ -208,6 +216,16 @@ int main()
         float currentFrame = static_cast<float>(glfwGetTime());
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
+
+        if (!gameOver) {
+            gameTime -= deltaTime;
+            if (gameTime <= 0.0f) {
+                gameTime = 0.0f;
+                gameOver = true;
+                std::cout << "Game Over! Final Score: " << score << std::endl;
+            }
+        }
+
         processInput(window);
 
         glClearColor(0.15f, 0.18f, 0.22f, 1.0f); //sky blue background
@@ -256,6 +274,8 @@ int main()
         glDrawArrays(GL_LINES, 0, 4);
         glEnable(GL_DEPTH_TEST);
 
+
+
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
@@ -275,6 +295,11 @@ void processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+
+    if (gameOver) return; 
+
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         camera.ProcessKeyboard(FORWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
@@ -284,6 +309,7 @@ void processInput(GLFWwindow* window)
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         camera.ProcessKeyboard(RIGHT, deltaTime);
     camera.Position.y = 1.5f;
+
     static bool lastLeft = false;
     bool currentLeft = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
     if (currentLeft && !lastLeft) {
