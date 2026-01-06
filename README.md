@@ -5,14 +5,14 @@
 
 **Dependencies Used**
 *the project uses only approved external libraries as specified in the module guidlines, these include;*
-*-GLFW for window creation and input handling*
-*-GLAD for loading OpenGL core fucntions*
-*-GLM for vector and matrix mathematics*
+* *GLFW for window creation and input handling*
+* *GLAD for loading OpenGL core fucntions*
+* *GLM for vector and matrix mathematics*
 
 *also, the project takes use of lots of standard C++ headers which include;*
-* *\<iostream\>  
-*-<vector>*
-*-<string>*
-*-<fstream>*
-*-<sstream>*
+* \<iostream\>  
+* \<vector\>
+* \<string\>
+* \<fstream\>
+* \<sstream\>
 
