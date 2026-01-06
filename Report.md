@@ -31,14 +31,25 @@
 
 **Test Cases**
 
-<img width="1202" height="824" alt="test2" src="https://github.com/user-attachments/assets/7aff6132-be77-41f4-86d4-196ec8675930" />
+<img width="1252" height="1002" alt="TEst 3" src="https://github.com/user-attachments/assets/e95c04b4-a537-4f80-93a2-5c70ca399440" />
+
+
+
 
 **Ingame Images**
+
+*screenshot of the game and terminal scoring system, yellow boxes are the targets, player must shoot, the player walks on the gray floor* 
 
 
 <img width="1276" height="776" alt="game" src="https://github.com/user-attachments/assets/7e166358-869d-4bec-853c-067f95075dd6" />
 
+
+*as players shoot the targets the terminal will display if a shot was a miss or a hit, if it was a hit the score will increase by +1*
+
+
 <img width="876" height="356" alt="terminal" src="https://github.com/user-attachments/assets/4571db02-3483-493a-80a8-28da18939f52" />
+
+
 
 **Game Mechanics and Implementation**
 
