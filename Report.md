@@ -26,12 +26,19 @@
 * *Code debugging*
 * *Bug Fixing*
 * *Teaching tool*
-* *Guide for what to keep me on track*
+* *Guide to keep me on track*
 * *Shader Writing*
 
 **Test Cases**
 
-<img width="1212" height="730" alt="test" src="https://github.com/user-attachments/assets/bfa80470-3263-414a-95f9-dfcb4bfb0b61" />
+<img width="1202" height="824" alt="test2" src="https://github.com/user-attachments/assets/7aff6132-be77-41f4-86d4-196ec8675930" />
+
+**Ingame Images**
 
 
+<img width="1276" height="776" alt="game" src="https://github.com/user-attachments/assets/7e166358-869d-4bec-853c-067f95075dd6" />
+
+<img width="876" height="356" alt="terminal" src="https://github.com/user-attachments/assets/4571db02-3483-493a-80a8-28da18939f52" />
+
+**Game Mechanics and Implementation**
 
