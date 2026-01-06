@@ -10,7 +10,7 @@
 *-GLM for vector and matrix mathematics*
 
 *also, the project takes use of lots of standard C++ headers which include;*
-*-iostream*
+* *\<iostream\>  
 *-<vector>*
 *-<string>*
 *-<fstream>*
