@@ -54,9 +54,15 @@
 **Game Mechanics and Implementation**
 
 *My aim training project utilises simple, classic game mechanics. This keeps the program easy to understand and useful for a bit of quick fun, or a small warmup game before playing something more competitive. These mechanics include:
-* *WASD for Movement*
+
+* *WASD for Movement and mouse movement to look around. Floor collison is achieved by clamping the y position of the camera.*
+
+<img width="400" height="300" alt="movment" src="https://github.com/user-attachments/assets/752c29df-24a1-4617-9a53-e0ac9bef483d" />
+
 * *Left Mouse click for Shooting*
+
 * *Timer*
+
 * *Scoring System*
 
 *1. Game Loop Pattern*
