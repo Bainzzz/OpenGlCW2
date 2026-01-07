@@ -1,7 +1,7 @@
 # OpenGlCW2
 **Gameplay**
 
-*My OpenGL project is a simple time based shooter where the player must aim at the targets, using the mouse, and then use left click to shoot at them and gain score. After shooting at the target it will dissapear to which another target will spawn in, ensuring 5 targets are on screen at all times. the player can also move aorund the stage using WASD, The goal of the game is for the player to try to obtain the highest score they can within a minute, the project serving as a bit of competitive fun as well as a simple little aim warmup game. After a minute has passed the player will be unable to shoot or move and must pres ESC to close the game, on the terminal the player's score will be displayed so they can return to try beat their score.*
+*My OpenGL project is a simple time based shooter where the player must aim at the targets, using the mouse, and then use left click to shoot at them and gain score. After shooting at the target it will dissapear to which another target will spawn in, ensuring 5 targets are on screen at all times. the player can also move aorund the stage using WASD, The goal of the game is for the player to try to obtain the highest score they can within a minute, the project serving as a bit of competitive fun as well as a simple aim warmup game. After a minute has passed the player will be unable to shoot or move and must pres ESC to close the game, on the terminal the player's score will be displayed so they can return to try beat their score.*
 
 **Dependencies Used**
 *the project uses only approved external libraries as specified in the module guidlines, these include;*
@@ -18,9 +18,9 @@
 
 **AI Implementation**
  
-*AI, Grok, was used extensively throughout the development of this coursework, it initially took a similar role as CW1, providing as a means for debugging, finding simple errors in my code and acting as a learning tool, but as development continued I ended up relying on the tool a lot more, using Grok to generate solutions for bugs, such as for my shooting mechanic, where pressing the left click would just destroy all targets, after using AI, i was able to quickly find the fix for this bug and then continue developement on other features, however as I continued to use AI for generating solutions I found my own code was harder and harder to follow which led to me relying on the tool even more, so I decided to stop development a bit sooner as to ensure I wasn't just blindly following AI for the rest of the project as I still wanted the work to be my own*
+*AI, Grok, was used extensively throughout the development of this coursework, it initially took a similar role as CW1, providing as a means for debugging, finding simple errors in my code and acting as a learning tool, but as development continued I ended up utilising the tool a lot more, using Grok to generate ideas to reolve bugs, such as for my shooting mechanic, where pressing the left click would just destroy all targets, after using AI, I was able to quickly find the fix for this bug and then continue developement on other features, it's important to note that I wouldn't blindly paste solutions, I would ensure I understood how these potential solutions would help and only give them a go if I understood them. However as I continued on with the project I found my code was harder and harder to follow, due to poor commenting, which led to me relying on the AI even more, so I decided to stop using it a bit sooner as to ensure I wasn't just blindly following AI for the rest of the project as I still wanted the work to be my own and to adhere to the AI usage guidlines.*
 
-*The best thing AI did was keep me on task however, after developing a feature, I would tell grok to which I would receive the next task to get on with, this was very useful as I was able to effectively stay organised and save myself lots of time, This led to me getting an effective project done in a reasonable amount of time. 
+*I also used AI for planning, after developing a feature, I would tell grok to which I would receive the next task to get on with, this was very useful as I was able to effectively stay organised and save myself lots of time, This led to me getting an effective project done in a reasonable amount of time, however I do believe this lead to me not focusing on my own plan and in the end contributed to scope creep occuring. 
 
 *In summary AI was mainly used for:*
 * *Code debugging*
@@ -102,3 +102,15 @@
 *Targets are allocated in an array, instead of being created or destroyed. When hit a target is just recylcled and has its position updated.*
 
 <img width="392" height="174" alt="target" src="https://github.com/user-attachments/assets/123a737f-10e5-4fe4-b92c-20b5b58f2729" />
+
+
+**Evaluation**
+*In conclusion, My 'aim training game' can be played in two ways, the first being similar to my first coursework, as a fun arcade style game where players can engage in friendly competition to go for new highscores, or it can be used as a way to warm up before playing more competitive games. I believe I've suceeded in both fronts here with the game being useful for casual or competitive gamers, and I am very pleased that what once started as a simple acrade style shooter idea became something that appeals to more people. However I do believe there is room for more improvement and that the project serves more as an MVP than a fully finished project. I think the absence of sounds effects and more complex graphics does hold the project back, especially when viewing it as an arcade style game as there is less positive feedback due to these absences and makes the game look too bland, because of these shortcomings I believe as it currently stands the project probably has more appeal to being a form of warmup game but there are ways that it falls short in this department too such as no variable target sizes or no moving targets hold it back slightly.* 
+*I think these shortcomings are a result of scope creep and time management. The project was initially made for one purpose but I got too focused on making it appeal to two demographics rather than fully fleshing out one.* 
+*Despite all of this however I do believe I have created a project that many types of players can find merit in, I just believe that with more effective planning and time I could have developed something more in line with my initial idea.*
+
+**AI declaration**
+
+<img width="616" height="1008" alt="declaration" src="https://github.com/user-attachments/assets/90adcb21-095a-41f6-bb3c-758da617227d" />
+
+
