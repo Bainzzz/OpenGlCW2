@@ -53,3 +53,31 @@
 
 **Game Mechanics and Implementation**
 
+*My aim training project utilises simple, classic game mechanics. This keeps the program easy to understand and useful for a bit of quick fun, or a small warmup game before playing something more competitive. These mechanics include:
+* *WASD for Movement*
+* *Left Mouse click for Shooting*
+* *Timer*
+* *Scoring System*
+
+*1. Game Loop Pattern*
+*Application follows a fixed time game loop, seperating input, update and render phases for fram rate independence. The use of deltaTime ensures smooth movement depsite frame rate.*
+
+<img width="300" height="150" alt="deltatime" src="https://github.com/user-attachments/assets/ce5585b0-0c8f-4879-99fb-69414f3e1217" />
+
+
+*2. Reusable Components*
+*game objects are composed of reusable components:*
+
+* *Camera class, in camera.h, encapsulates position, orientation and movement logic*
+* *Shader class manages shader loading and uniform setting*
+* *Rendering objects such as floor, targets and crosshair use seperate VAO/VBO setups for independent drawing*
+
+*3. Game Over*
+*Game state is controlled by boolean gameOver tag. When the timer reaches zero, gameOver = true, disabling all controls apart from ESC, to allow for the game to be closed.*
+
+<img width="278" height="58" alt="gameover" src="https://github.com/user-attachments/assets/40f00fa4-496d-40d8-8f5b-52f33d3fe0af" />
+
+*4. Targets*
+*Targets are allocated in an array, instead of being created or destroyed. When hit a target is just recylcled and has its position updated.*
+
+<img width="392" height="174" alt="target" src="https://github.com/user-attachments/assets/123a737f-10e5-4fe4-b92c-20b5b58f2729" />
