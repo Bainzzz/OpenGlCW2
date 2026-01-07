@@ -59,11 +59,26 @@
 
 <img width="400" height="300" alt="movment" src="https://github.com/user-attachments/assets/752c29df-24a1-4617-9a53-e0ac9bef483d" />
 
-* *Left Mouse click for Shooting*
+* *Left Mouse click for Shooting. The shooting mecahnic utilises simple raycasting where left click fires a ray along the camera.Front, The hit detection uses bounding sphere intersection with a dot-product aim check.*
 
-* *Timer*
+ <img width="420" height="72" alt="raycast" src="https://github.com/user-attachments/assets/938fea33-5b17-41ed-8224-3371657d2aa7" />
 
-* *Scoring System*
+* *Timer. A 60 second countdown is updated each frame using deltaTime*
+
+<img width="710" height="266" alt="time" src="https://github.com/user-attachments/assets/1353d5b3-7b7a-4fdc-90b9-e3626308011b" />
+
+ *When time expires, input is disabled and the final score is printed to the console*
+
+* *Scoring System. The scoring is incremented on succesful hits and printed to the console for feedback*
+
+<img width="400" height="114" alt="feedback" src="https://github.com/user-attachments/assets/a1f33eeb-fb88-4f99-91e0-ba7e203124b2" />
+
+* *Respawning targets. targets respawn at random positions using rand(). Height is randomised vertically. Providing infinite gameplay.*
+
+
+<img width="1004" height="146" alt="respawn" src="https://github.com/user-attachments/assets/845583b4-477a-4276-9eac-b53946b8d940" />
+
+
 
 *1. Game Loop Pattern*
 *Application follows a fixed time game loop, seperating input, update and render phases for fram rate independence. The use of deltaTime ensures smooth movement depsite frame rate.*
@@ -78,7 +93,7 @@
 * *Shader class manages shader loading and uniform setting*
 * *Rendering objects such as floor, targets and crosshair use seperate VAO/VBO setups for independent drawing*
 
-*3. Game Over*
+*3. Game Over* 
 *Game state is controlled by boolean gameOver tag. When the timer reaches zero, gameOver = true, disabling all controls apart from ESC, to allow for the game to be closed.*
 
 <img width="278" height="58" alt="gameover" src="https://github.com/user-attachments/assets/40f00fa4-496d-40d8-8f5b-52f33d3fe0af" />
